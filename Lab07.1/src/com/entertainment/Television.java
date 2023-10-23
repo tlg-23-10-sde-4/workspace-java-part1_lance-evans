@@ -27,19 +27,21 @@ public class Television {
     private int storedVolume;
 
     //constructors
-    public Television(){
+    public Television() {
         instanceCount++;
     }
-    public Television(String brand){
+
+    public Television(String brand) {
         this();                     //delegate to no-arg ctor for the increment
         setBrand(brand);            //delegate to setter for any validation
     }
 
-    public Television(String brand, int volume){
+    public Television(String brand, int volume) {
         this(brand);                //delegate to 1-arg ctor above for brand
         setVolume(volume);          //handle volume by delegating to the setter for validation
     }
-    public Television(String brand, int volume, DisplayType display){
+
+    public Television(String brand, int volume, DisplayType display) {
         this(brand, volume);
         setDisplay(display);
     }
@@ -47,14 +49,14 @@ public class Television {
     //BUSINESS METHODS
     // Functions/Operations/methods - what does it do?
     // Function to turn TV on
-    private void muted(){
+    private void muted() {
         setMute(true);
         storedVolume = volume;
         setVolume(MIN_VOLUME);
         System.out.println("TV is now muted. Volume: " + volume);
     }
 
-    private void unMute(){
+    private void unMute() {
         setMute(false);
         setVolume(storedVolume);
         System.out.println("TV is no longer muted. Volume: " + storedVolume);
@@ -63,30 +65,28 @@ public class Television {
     public void mute() {
         if (isMuted()) {
             unMute();
-        }
-        else {
+        } else {
             muted();
         }
     }
 
     public void turnOn() {
         boolean isConnected = verifyInternetConnection();
-        if (isConnected){
+        if (isConnected) {
             isOn = true;
             System.out.println(getBrand() + " TV is now on and the volume level is at " + getVolume() + ".");
-        }
-        else {
+        } else {
             isOn = false;
             System.out.println(getBrand() + " com.entertainment.Television is not connected. Please check your connection.");
         }
     }
+
     // Function to turn TV off
     public void turnOff() {
         if (isOn) {
             System.out.println(getBrand() + " TV is shutting down...");
             isOn = false;
-        }
-        else {
+        } else {
             System.out.println(getBrand() + " TV is not on, therefore, we can not turn it off... Please turn on your TV first.");
         }
 
@@ -100,13 +100,13 @@ public class Television {
     public void setBrand(String brand) {
         if (isValidBrand(brand)) {
             this.brand = brand;
-        }
-        else {
+        } else {
             System.out.println("Error: invalid brand. Please select from the following: " + Arrays.toString(VALID_BRANDS));
         }
     }
-    private static boolean isValidBrand(String brand){
-        boolean valid =false;
+
+    private static boolean isValidBrand(String brand) {
+        boolean valid = false;
         for (String currentBrand : VALID_BRANDS) {
             if (brand.equals(currentBrand)) {
                 valid = true;
@@ -124,7 +124,7 @@ public class Television {
         //if (isMute){
         //    unMute();
         //}
-        if (volume >= MIN_VOLUME && volume <= MAX_VOLUME){
+        if (volume >= MIN_VOLUME && volume <= MAX_VOLUME) {
             isMute = false;
             this.volume = volume;
         }
@@ -158,17 +158,16 @@ public class Television {
         this.display = display;
     }
 
-    private boolean verifyInternetConnection(){
+    private boolean verifyInternetConnection() {
         return true; //fake implementation
     }
 
     // toString()
-    public String toString(){
+    public String toString() {
         String volumeString;
-        if (volume == 0){
+        if (volume == 0) {
             volumeString = "<muted>";
-        }
-        else {
+        } else {
             volumeString = String.valueOf(getVolume());
         }
         return String.format("com.entertainment.Television: %s; Volume: %s; com.entertainment.DisplayType: %s.", getBrand(),
