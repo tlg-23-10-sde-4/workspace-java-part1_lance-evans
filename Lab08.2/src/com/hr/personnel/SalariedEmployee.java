@@ -6,7 +6,7 @@ public class SalariedEmployee extends Employee {
     public double salary;
 
     public SalariedEmployee(){
-
+        super();
     }
     public SalariedEmployee(String name, LocalDate hireDate){
         super(name,hireDate);

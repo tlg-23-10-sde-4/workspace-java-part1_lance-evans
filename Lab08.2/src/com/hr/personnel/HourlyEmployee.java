@@ -8,6 +8,7 @@ public class HourlyEmployee extends Employee {
     double hours;
 
     public HourlyEmployee() {
+        super();
 
     }
     public HourlyEmployee(String name, LocalDate hireDate){
