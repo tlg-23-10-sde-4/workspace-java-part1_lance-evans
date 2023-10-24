@@ -7,9 +7,11 @@
  */
 
 package com.hr.personnel.client;
-
 import com.hr.personnel.Department;
 import com.hr.personnel.Employee;
+import com.hr.personnel.HourlyEmployee;
+import com.hr.personnel.SalariedEmployee;
+
 import java.time.LocalDate;
 
 /**
@@ -32,6 +34,11 @@ class HRClient {
 
         // make its Employees work
         System.out.println("\nMake employees work:");
+        dept.workEmployees();
+
+        dept.addEmployee(new SalariedEmployee("Joe", LocalDate.of(2015, 5, 15), 89000));
+        dept.addEmployee(new HourlyEmployee("Kevin", LocalDate.of(2016, 3, 21), 32.75, 26));
+        dept.listEmployees();
         dept.workEmployees();
     }
 }
