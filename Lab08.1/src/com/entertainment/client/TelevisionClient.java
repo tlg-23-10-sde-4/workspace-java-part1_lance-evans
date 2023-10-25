@@ -10,11 +10,12 @@ package com.entertainment.client;
 
 import com.entertainment.DisplayType;
 import com.entertainment.Television;
+import com.entertainment.VolumeLevel;
 
 class TelevisionClient {
   
     public static void main(String[] args) {
-        Television tv = new Television("Samsung", 65, DisplayType.LED);
+        Television tv = new Television("Samsung", VolumeLevel.SOFT, DisplayType.LED);
         System.out.println(tv);
         // change the channel
         tv.changeChannel("ESPN");

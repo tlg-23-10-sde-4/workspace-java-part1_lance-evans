@@ -13,7 +13,6 @@ import com.hr.personnel.Executive;
 import com.hr.personnel.HourlyEmployee;
 import com.hr.personnel.SalariedEmployee;
 import gov.irs.IRS;
-import gov.irs.TaxPayer;
 
 import java.time.LocalDate;
 

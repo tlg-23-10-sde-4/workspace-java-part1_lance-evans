@@ -21,7 +21,6 @@ public class Television {
     public static final int MIN_VOLUME = 0;
     public static final int MAX_VOLUME = 100;
     public static final String[] VALID_BRANDS = { "Samsung", "LG", "Sony", "Toshiba" };
-
     private static int instanceCount = 0;
 
     public static int getInstanceCount() {
@@ -32,6 +31,8 @@ public class Television {
     // these live *inside each instance*
     private String brand;
     private int volume;
+    private VolumeLevel volumeLevelEnum;
+    private boolean isVolumeLevelEnum;
     private DisplayType display = DisplayType.LED;
 
     // Television HAS-A Tuner
@@ -47,20 +48,20 @@ public class Television {
         setBrand(brand);
     }
 
-    public Television(String brand, int volume) {
+    public Television(String brand, VolumeLevel volumeLevelEnum) {
         this(brand);        // delegate to other ctor above for brand
         setVolume(volume);  // handle volume myself, by delegating to setter
     }
 
-    public Television(String brand, int volume, DisplayType display) {
-        this(brand, volume);
+    public Television(String brand, VolumeLevel volumeLevelEnum, DisplayType display) {
+        this(brand, volumeLevelEnum);
         setDisplay(display);
     }
 
     // BUSINESS METHODS (functions) - what operations can com.entertainment.Television objects do?
     public void turnOn() {
         boolean isConnected = verifyInternetConnection();
-        System.out.println("Turning on your " + brand + " television to volume " + volume);
+        System.out.println("Turning on your " + brand + " television to volume " + volumeLevelEnum);
     }
 
     public void turnOff() {
@@ -92,6 +93,14 @@ public class Television {
 
     public int getVolume() {
         return volume;
+    }
+
+    private boolean isVolumeEnum(){
+        return volumeLevelEnum instanceof VolumeLevel;
+    }
+
+    public void setVolumeLevelEnum(){
+        ;
     }
 
     public void setVolume(int volume) {
