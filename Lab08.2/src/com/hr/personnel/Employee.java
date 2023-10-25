@@ -21,14 +21,13 @@ import java.time.LocalDate;
  *   void work()        simulates work by printing a message to show it was called.
  *   String toString()  self-explanatory.
  */
-public class Employee {
+public abstract class Employee {
     // fields
     private String name;
     private LocalDate hireDate;
 
     // constructors
     public Employee() {
-        super();
     }
 
     public Employee(String name, LocalDate hireDate) {
@@ -40,6 +39,11 @@ public class Employee {
     public void work() {
         System.out.println(getName() + " working hard since " + getHireDate());
     }
+    /*
+     * Declare that all employees get paid BUT we dont implement it here.
+     * We cant. We simply have no data to perform the task.
+     */
+    public abstract void pay();
 
     // accessor methods
     public String getName() {
@@ -60,6 +64,6 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Employee: name=" + getName() + ", hireDate=" + getHireDate();
+        return getClass().getSimpleName()+  ": name=" + getClass().getSimpleName() + ", hireDate=" + getHireDate();
     }
 }

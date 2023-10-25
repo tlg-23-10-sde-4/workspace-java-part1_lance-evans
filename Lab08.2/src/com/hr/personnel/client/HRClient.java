@@ -8,7 +8,6 @@
 
 package com.hr.personnel.client;
 import com.hr.personnel.Department;
-import com.hr.personnel.Employee;
 import com.hr.personnel.HourlyEmployee;
 import com.hr.personnel.SalariedEmployee;
 
@@ -25,8 +24,10 @@ class HRClient {
         System.out.println(dept);
 
         // add Employees to it
-        dept.addEmployee(new Employee("Jason", LocalDate.of(1990, 8, 24)));
-        dept.addEmployee(new Employee("Julie", LocalDate.of(2000, 2, 2)));
+        dept.addEmployee(new SalariedEmployee("Joe", LocalDate.of(2015, 5, 15), 1900));
+        dept.addEmployee(new HourlyEmployee("Kevin", LocalDate.of(2016, 3, 21), 32.75, 26));
+        dept.addEmployee(new SalariedEmployee("Jason", LocalDate.of(1992, 5, 5), 1800));
+        dept.addEmployee(new SalariedEmployee("Julie", LocalDate.of(2000, 2, 2), 1500));
 
         // list its Employees
         System.out.println("\nList employees:");
@@ -36,9 +37,8 @@ class HRClient {
         System.out.println("\nMake employees work:");
         dept.workEmployees();
 
-        dept.addEmployee(new SalariedEmployee("Joe", LocalDate.of(2015, 5, 15), 89000));
-        dept.addEmployee(new HourlyEmployee("Kevin", LocalDate.of(2016, 3, 21), 32.75, 26));
-        dept.listEmployees();
-        dept.workEmployees();
+        // pay employees
+        System.out.println("\nPay employees");
+        dept.payEmployees();
     }
 }

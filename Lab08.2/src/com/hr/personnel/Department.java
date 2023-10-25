@@ -54,6 +54,12 @@ public class Department {
         }
     }
 
+    public void payEmployees(){
+        for (int i = 0; i < currentIndex; i++){
+            employees[i].pay();
+        }
+    }
+
     // helper method to add an Employee to the array
     public void addEmployee(Employee emp) {
         employees[currentIndex++] = emp;
@@ -77,6 +83,6 @@ public class Department {
     }
 
     public String toString() {
-        return "Department: name=" + getName() + ", location=" + getLocation();
+        return getClass().getSimpleName()+": name=" + getName() + ", location=" + getLocation();
     }
 }
