@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 public class SalariedEmployee extends Employee {
     double salary;
+    double STANDARD_DEDUCTION = 9500;
 
     public SalariedEmployee(){
         super();
@@ -29,6 +30,11 @@ public class SalariedEmployee extends Employee {
     public void payTaxes() {
         double taxes = SALARIED_TAX_RATE * getSalary();
         System.out.println(getName() + " paid taxes of " + taxes);
+    }
+
+    @Override
+    public double getStandardDeduction(){
+        return STANDARD_DEDUCTION;
     }
 
     public double getSalary() {
